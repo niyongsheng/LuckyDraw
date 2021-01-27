@@ -26,6 +26,32 @@ standby site: https://niyongsheng.gitee.io/pages/luck_draw
 - [x] [Vue-I18n](https://kazupon.github.io/vue-i18n)
 - [x] [Vue-XLSX](https://vue-xlsx.netlify.app)
 
+## Excel:
+> Configure the 'luckDraw' data source
+
+| Field | Type | Default | Description | 
+| :--- | :--- |:---|:---|
+| key | int | - | index |
+| name | string | - | award name |
+| subtitle | string | - | prize name, subtitle |
+| url | url | - | background, prize, head |
+| isShow | bool | False | card flip state |
+| remark | string | - | remark info |
+
+<br/>
+
+> 配置幸运抽奖数据源
+
+| 字段 | 类型 | 默认值 | 说明 | 
+| :--- | :--- |:---|:---|
+| key | int | - | 序号 |
+| name | string | - | 奖项名字 |
+| subtitle | string | - | 奖品名字、子标题 |
+| url | url | - | 背景图、奖品图、头像 |
+| isShow | bool | False | 卡片翻转状态 |
+| remark | string | - | 备注信息 |
+
+
 ## Usage：
 ```node
 yarn install
