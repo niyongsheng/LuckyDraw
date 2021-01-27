@@ -1,4 +1,4 @@
-![(logo)](https://github.com/niyongsheng/LuckyDraw/blob/main/logo.png?raw=true&width=100&height=100)
+![(logo)](https://github.com/niyongsheng/LuckyDraw/blob/master/logo.png?raw=true&width=100&height=100)
 LuckyDraw
 ===
 [![](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/niyongsheng/LuckyDraw/blob/master/LICENSE)
