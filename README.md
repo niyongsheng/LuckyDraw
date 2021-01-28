@@ -9,15 +9,15 @@ LuckyDraw
 > Luck draw Vue web project.
 
 ## Example:
-site: https://niyongsheng.github.io/luck_draw
+instance1: https://niyongsheng.github.io/luck_draw
 <br/>
-standby site: https://niyongsheng.gitee.io/pages/luck_draw
+instance2: https://niyongsheng.gitee.io/pages/luck_draw
 
 ## Modules:
-- [x] Luck Card
-- [x] Luck Wheel
-- [X] Luck Cloud
-- [x] Luck Simple
+- [x] [Luck Card](https://niyongsheng.github.io/luck_draw/#/luckCard)
+- [x] [Luck Wheel](https://niyongsheng.github.io/luck_draw/#/luckWheel)
+- [X] [Luck Cloud](https://niyongsheng.github.io/luck_draw/#/luckCloud)
+- [x] [Luck Simple](https://niyongsheng.github.io/luck_draw/#/luckStar)
 
 ## Features:
 - [Scss](https://sass-lang.com)
@@ -40,7 +40,7 @@ standby site: https://niyongsheng.gitee.io/pages/luck_draw
 
 <br/>
 
-> 配置幸运抽奖数据源
+<!-- > 配置幸运抽奖数据源
 
 | 字段 | 类型 | 默认值 | 说明 | 
 | :--- | :--- |:---|:---|
@@ -49,7 +49,7 @@ standby site: https://niyongsheng.gitee.io/pages/luck_draw
 | subtitle | string | - | 奖品名字、子标题 |
 | url | url | - | 背景图、奖品图、头像 |
 | isShow | bool | False | 卡片翻转状态 |
-| remark | string | - | 备注信息 |
+| remark | string | - | 备注信息 | -->
 
 ## Browser support
 | [<img src="https://raw.githubusercontent.com/godban/browsers-support-badges/master/src/images/edge.png" alt="IE" width="16px" height="16px" />](http://godban.github.io/browsers-support-badges/)</br>IE | [<img src="https://raw.githubusercontent.com/godban/browsers-support-badges/master/src/images/firefox.png" alt="Firefox" width="16px" height="16px" />](http://godban.github.io/browsers-support-badges/)</br>Firefox | [<img src="https://raw.githubusercontent.com/godban/browsers-support-badges/master/src/images/chrome.png" alt="Chrome" width="16px" height="16px" />](http://godban.github.io/browsers-support-badges/)</br>Chrome | [<img src="https://raw.githubusercontent.com/godban/browsers-support-badges/master/src/images/safari.png" alt="Safari" width="16px" height="16px" />](http://godban.github.io/browsers-support-badges/)</br>Safari | [<img src="https://raw.githubusercontent.com/godban/browsers-support-badges/master/src/images/safari-ios.png" alt="iOS Safari" width="16px" height="16px" />](http://godban.github.io/browsers-support-badges/)</br>iOS | [<img src="https://raw.githubusercontent.com/godban/browsers-support-badges/master/src/images/chrome-android.png" alt="Chrome for Android" width="16px" height="16px" />](http://godban.github.io/browsers-support-badges/)</br>Android |
@@ -60,13 +60,14 @@ standby site: https://niyongsheng.gitee.io/pages/luck_draw
 ```node
 yarn install
 
-yarn run serve
+yarn serve
 
-yarn run build
+yarn build
 ```
 
 ## Remind
- `vue-cli 3.x`<br>
+`vue 2.6+ `<br/>
+ `vue-cli 3.x`<br/>
  `web storm 2020.3`
 
 ## Contribution
