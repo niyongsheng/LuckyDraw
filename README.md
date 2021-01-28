@@ -9,9 +9,9 @@ LuckyDraw
 > Luck draw Vue web project.
 
 ## Example:
-instance1: https://niyongsheng.github.io/luck_draw
+Primary_instance: https://niyongsheng.github.io/luck_draw
 <br/>
-instance2: https://niyongsheng.gitee.io/pages/luck_draw
+Standby_instance: https://niyongsheng.gitee.io/pages/luck_draw
 
 ## Modules:
 - [x] [Luck Card](https://niyongsheng.github.io/luck_draw/#/luckCard)
