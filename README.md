@@ -22,9 +22,10 @@ Standby_instance: https://niyongsheng.gitee.io/pages/luck_draw
 ## Features:
 - [Scss](https://sass-lang.com)
 - [VueX](https://vuex.vuejs.org)
-- [Vue Router](https://router.vuejs.org)
+- [AntdV](https://www.antdv.com)
 - [Vue-I18n](https://kazupon.github.io/vue-i18n)
 - [Vue-XLSX](https://vue-xlsx.netlify.app)
+- [Vue Router](https://router.vuejs.org)
 
 ## Excel:
 > Configure the 'luckDraw' data source
