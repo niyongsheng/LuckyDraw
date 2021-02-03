@@ -9,11 +9,11 @@ LuckyDraw
 > Luck draw Vue web project.
 
 ## Example:
-![(snapshot)](https://github.com/niyongsheng/LuckyDraw/blob/master/snapshot.png?raw=true)
-
 Primary_instance: https://niyongsheng.github.io/luck_draw
 <br/>
 Standby_instance: https://niyongsheng.gitee.io/pages/luck_draw
+
+![(snapshot)](https://github.com/niyongsheng/LuckyDraw/blob/master/snapshot.png?raw=true)
 
 ## Modules:
 - [x] [Luck Card](https://niyongsheng.github.io/luck_draw/#/luckCard)
