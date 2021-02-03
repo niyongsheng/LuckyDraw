@@ -96,7 +96,7 @@
               </div>
               <div @click="toReward($store.state.profiles.wechatPayUrl)">
                 <vue-qr
-                    class="qr_code_a"
+                    class="qr_code_w"
                     :text="$store.state.profiles.wechatPayUrl"
                     :size="100"
                     :logoSrc="require('@/assets/img/pay/wechatpay.png')"
@@ -110,7 +110,7 @@
       </li>
     </ul>
     <br/>
-    <a-divider orientation="center">
+    <a-divider orientation="center" class="bottom_line">
       <p style="color: lightgray; font-size: 10px; margin-top: 10px">© {{ date.getFullYear() }} NYS, All Rights
         Reserved.</p>
     </a-divider>
@@ -126,10 +126,6 @@ import {mapState} from 'vuex'
 
 import zh_CN from "ant-design-vue/lib/locale-provider/zh_CN"
 import en_US from "ant-design-vue/lib/locale-provider/en_US"
-
-// import moment from 'moment'
-// import 'moment/locale/zh-cn'
-// moment.locale('en')
 
 export default {
   name: 'Home',
@@ -201,11 +197,6 @@ export default {
   border-color: #EDB335;
 }
 
-.safe_btn {
-  color: #fff;
-  background: #64BF3F;
-}
-
 .icon_i {
   width: 20%;
   height: 20%;
@@ -236,6 +227,11 @@ a {
 
 .qr_code_w {
   color: #54A037;
+}
+
+.bottom_line {
+  /*float: bottom;*/
+  /*margin-bottom: 20px;*/
 }
 
 </style>

@@ -17,3 +17,5 @@ new Vue({
   i18n,
   render: h => h(App),
 }).$mount('#app')
+
+console.log("\n %c Luck Draw ", "color:#fff;background:#547FF9;padding:5px 0;border-radius: 7px;border: 1px solid #DEE9FC;")
