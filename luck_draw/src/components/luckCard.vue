@@ -47,7 +47,7 @@
           <img class="img-item" :src="item.url || require('@/assets/img/luck-card/project_card_bg.png')"/>
         </div>
         <div class="front">
-          <h2 class="title_item">{{ item.name }}</h2>
+          <a class="title_item">{{ item.name }}</a>
           <a class="subtitle_item">{{ item.subtitle }}</a>
 
           <a-input-search
@@ -170,7 +170,7 @@ $cardHeight: 350px;
         width: 100%;
         text-align: center;
         color: white;
-        font-size: 20px;
+        font-size: 27px;
         font-weight: bold;
       }
 
