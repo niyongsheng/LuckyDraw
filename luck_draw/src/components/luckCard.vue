@@ -134,7 +134,9 @@ export default {
     },
     ...mapState('luckCardM', ['dataSource'])
   },
-  mounted() {}
+  mounted() {
+    this.randomItem()
+  }
 }
 </script>
 
