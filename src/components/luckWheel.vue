@@ -6,14 +6,17 @@
         :sub-title="$t('luckWheel.header.subtitle')"
         @back="() => $router.push({name: 'home'})"
     >
-      <template slot="extra">
-        <a-button key="3" icon="sync" @click="handleRandomItem">
+      <template #extra>
+        <a-button key="3" @click="handleRandomItem">
+          <template #icon><a-icon type="sync"/></template>
           {{ $t('luckWheel.header.rr') }}
         </a-button>
-        <a-button key="2" icon="minus-circle" @click="handleClearCache">
+        <a-button key="2" @click="handleClearCache">
+          <template #icon><a-icon type="minus-circle"/></template>
           {{ $t('luckWheel.header.cc') }}
         </a-button>
-        <a-button key="1" icon="setting" type="primary" @click="showDrawer">
+        <a-button key="1" type="primary" @click="showDrawer">
+          <template #icon><a-icon type="setting"/></template>
           {{ $t('luckWheel.header.st') }}
         </a-button>
       </template>
@@ -23,7 +26,7 @@
         :title="$t('luckWheel.listTitle')"
         placement="right"
         :closable="false"
-        :visible="visible"
+        :open="visible"
         width="50%"
         @close="onClose"
     >
@@ -46,41 +49,40 @@
             ref="childWheel"
             :prizeList="dataSource"
             @over="openNotification">
-          <template v-slot:item="{ item }">
+          <template #item="{ item }">
             <div class="prize-name">{{item.name}}</div>
-            <img class="prize-img" :src="item.url ? item.url : require('@/assets/img/lucky-whell/bean_one.png')" style="border-radius: 5px">
+            <img class="prize-img" :src="item.url ? item.url : beanImg" style="border-radius: 5px">
           </template>
         </wheel>
 
-        <img class="btn-go" @click="go" :src="require('@/assets/img/lucky-whell/go.png')" />
+        <img class="btn-go" @click="go" :src="goImg" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import {Button, PageHeader, Drawer, Input, Icon, Tooltip, Empty} from 'ant-design-vue'
+import { h } from 'vue'
+import { SmileOutlined } from '@ant-design/icons-vue'
 import Wheel from '@/components/wheel'
 import ItemList from './list/itemList'
 import {mapState, mapMutations} from 'vuex'
+
+import beanImg from '@/assets/img/lucky-whell/bean_one.png'
+import goImg from '@/assets/img/lucky-whell/go.png'
 
 export default {
   name: 'LuckWheel',
   components: {
     ItemList,
-    Wheel,
-    [Empty.name]: Empty,
-    [PageHeader.name]: PageHeader,
-    [Button.name]: Button,
-    [Drawer.name]: Drawer,
-    [Input.name]: Input,
-    [Icon.name]: Icon,
-    [Tooltip.name]: Tooltip
+    Wheel
   },
   data() {
     return {
       visible: false,
-      isRunning: false
+      isRunning: false,
+      beanImg,
+      goImg
     }
   },
   methods: {
@@ -107,7 +109,7 @@ export default {
         duration: null,
         message: prizeInfo.name,
         description: prizeInfo.subtitle,
-        icon: <a-icon type="smile" style="color: #108ee9"/>,
+        icon: h(SmileOutlined, { style: { color: '#108ee9' } }),
       });
     },
     showDrawer() {
@@ -152,7 +154,7 @@ export default {
       }
     }
   },
-  beforeDestroy() {
+  beforeUnmount() {
     this.$notification.destroy()
   }
 }
@@ -175,7 +177,7 @@ export default {
     transform: translateX(-50%);
     text-align: center;
     font-size: 0;
-    background-image: url('~@/assets/img/lucky-whell/disk_bg.png');
+    background-image: url('../assets/img/lucky-whell/disk_bg.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100%;

@@ -6,14 +6,17 @@
         :sub-title="$t('luckCard.header.subtitle')"
         @back="() => $router.push({name: 'home'})"
     >
-      <template slot="extra">
-        <a-button key="3" icon="sync" @click="handleRandomItem">
+      <template #extra>
+        <a-button key="3" @click="handleRandomItem">
+          <template #icon><a-icon type="sync"/></template>
           {{ $t('luckCard.header.rr') }}
         </a-button>
-        <a-button key="2" icon="minus-circle" @click="handleClearCache">
+        <a-button key="2" @click="handleClearCache">
+          <template #icon><a-icon type="minus-circle"/></template>
           {{ $t('luckCard.header.cc') }}
         </a-button>
-        <a-button key="1" icon="setting" type="primary" @click="showDrawer">
+        <a-button key="1" type="primary" @click="showDrawer">
+          <template #icon><a-icon type="setting"/></template>
           {{ $t('luckCard.header.st') }}
         </a-button>
       </template>
@@ -23,7 +26,7 @@
         :title="$t('luckCard.listTitle')"
         placement="right"
         :closable="false"
-        :visible="visible"
+        :open="visible"
         width="50%"
         @close="onClose"
     >
@@ -44,7 +47,7 @@
            @click="handleClick(index)" :data-id=index>
         <div class="back">
           <a class="back_title">{{ $t('luckCard.no') }}{{ ++index }}</a>
-          <img class="img-item" :src="item.url || require('@/assets/img/luck-card/project_card_bg.png')"/>
+          <img class="img-item" :src="item.url || projectCardBg"/>
         </div>
         <div class="front">
           <a class="title_item">{{ item.name }}</a>
@@ -54,10 +57,16 @@
               class="remark_item"
               allowClear
               :placeholder="$t('luckCard.card.remark')"
-              @search="onCommit(...arguments, item)"
+              @search="value => onCommit(value, item)"
           >
-            <a-icon slot="prefix" type="user"/>
-            <a-button slot="enterButton" :key="index" icon="check"></a-button>
+            <template #prefix>
+              <a-icon type="user"/>
+            </template>
+            <template #enterButton>
+              <a-button :key="index">
+                <template #icon><a-icon type="check"/></template>
+              </a-button>
+            </template>
           </a-input-search>
 
           <a class="id_item">*{{ item.key }}*</a>
@@ -69,27 +78,21 @@
 </template>
 
 <script>
-import {Button, PageHeader, Drawer, Input, Icon, Tooltip, Empty} from 'ant-design-vue'
 import ItemList from './list/itemList'
 import {mapState, mapMutations} from 'vuex'
+
+import projectCardBg from '@/assets/img/luck-card/project_card_bg.png'
 
 export default {
   name: 'luckCard',
   components: {
-    ItemList,
-    [Empty.name]: Empty,
-    [PageHeader.name]: PageHeader,
-    [Button.name]: Button,
-    [Drawer.name]: Drawer,
-    [Input.name]: Input,
-    [Input.Search.name]: Input.Search,
-    [Icon.name]: Icon,
-    [Tooltip.name]: Tooltip
+    ItemList
   },
   data() {
     return {
       visible: false,
-      winnerList: []
+      winnerList: [],
+      projectCardBg
     }
   },
   methods: {
@@ -102,8 +105,7 @@ export default {
     handleClick(index) {
       this.updateIsShowByIndex({index: index-1, isShow: true})
     },
-    onCommit(value, e, item) {
-      typeof (e)
+    onCommit(value, item) {
       let winItem = {winner: value, draw: item}
       this.winnerList.push(winItem)
       this.$message.success(this.$t('luckCard.card.winner'))

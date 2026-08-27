@@ -1,14 +1,5 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 import Home from '@/components/home'
-
-// 重写push方法，处理相同路由跳转会报错的问题
-const routerPush = VueRouter.prototype.push
-VueRouter.prototype.push = function push (location) {
-  return routerPush.call(this, location).catch(error => error)
-}
-
-Vue.use(VueRouter)
 
 const routes = []
 
@@ -71,7 +62,8 @@ routes.push(
   ]
 )
 
-const router = new VueRouter({
+const router = createRouter({
+  history: createWebHashHistory(),
   routes,
   // 页面滚动行为
   scrollBehavior (/* to, from, savedPosition */) {
@@ -82,9 +74,8 @@ const router = new VueRouter({
   }
 })
 
-router.beforeEach((to, from, next) => {
+router.beforeEach((to) => {
   document.title = to.meta.title
-  next()
 })
 
 export default router

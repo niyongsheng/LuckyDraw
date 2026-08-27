@@ -6,7 +6,7 @@
         title="LUCK DRAW"
         @back="() => $router.go(-1)"
     >
-      <template slot="extra">
+      <template #extra>
         <a-radio-group :default-value="locale" @change="changeLocale">
           <a-radio-button key="en" :value="en_US">
             English
@@ -27,26 +27,15 @@
       GitHub
     </a>
     <br/>
-    <xlsx-workbook>
-      <xlsx-sheet
-          :collection="sheet.data"
-          v-for="sheet in sheets"
-          :key="sheet.key"
-          :sheet-name="sheet.name"
-      />
-      <xlsx-download filename="luck_draw.xlsx" disable-wrapper-click>
-        <template #default="{download}">
-          <a-button
-              type="default"
-              style="margin: 10px auto" icon="cloud-download"
-              shape="round"
-              @click="download"
-          >
-            {{ $t('home.downTem') }}
-          </a-button>
-        </template>
-      </xlsx-download>
-    </xlsx-workbook>
+    <a-button
+        type="default"
+        style="margin: 10px auto"
+        shape="round"
+        @click="downloadTemplate"
+    >
+      <template #icon><a-icon type="cloud-download"/></template>
+      {{ $t('home.downTem') }}
+    </a-button>
 
     <div class="btn_line_group">
       <router-link to='luckCard'>
@@ -68,7 +57,7 @@
     <ul>
       <li>
         <a-popover :title="$t('home.dev')" trigger="click">
-          <template slot="content">
+          <template #content>
             <a :href="sina" target="_blank">
               {{ $t('home.sin') }}
               <a-icon type="weibo"/>
@@ -83,14 +72,14 @@
       <li></li>
       <li>
         <a-popover :title="$t('home.pay')" trigger="click" placement="right">
-          <template slot="content">
+          <template #content>
             <div style="display: flex;">
               <div @click="toReward($store.state.profiles.aliPayUrl)">
                 <vue-qr
                     class="qr_code_a"
                     :text="$store.state.profiles.aliPayUrl"
                     :size="100"
-                    :logoSrc="require('@/assets/img/pay/alipay.png')"
+                    :logoSrc="alipayImg"
                 >
                 </vue-qr>
               </div>
@@ -99,7 +88,7 @@
                     class="qr_code_w"
                     :text="$store.state.profiles.wechatPayUrl"
                     :size="100"
-                    :logoSrc="require('@/assets/img/pay/wechatpay.png')"
+                    :logoSrc="wechatImg"
                 >
                 </vue-qr>
               </div>
@@ -119,38 +108,28 @@
 
 <script>
 import vueQr from "vue-qr";
-import {Button, Popover, PageHeader, Dropdown, Menu, Icon, Radio, Pagination, Divider} from 'ant-design-vue'
-import {XlsxWorkbook, XlsxSheet, XlsxDownload} from 'vue-xlsx'
+import * as XLSX from 'xlsx'
 import EventBus from '@/assets/js/eventBus'
 import {mapState} from 'vuex'
 
-import zh_CN from "ant-design-vue/lib/locale-provider/zh_CN"
-import en_US from "ant-design-vue/lib/locale-provider/en_US"
+import alipayImg from '@/assets/img/pay/alipay.png'
+import wechatImg from '@/assets/img/pay/wechatpay.png'
+
+import zh_CN from "ant-design-vue/es/locale/zh_CN"
+import en_US from "ant-design-vue/es/locale/en_US"
 
 export default {
   name: 'Home',
   components: {
-    vueQr,
-    XlsxWorkbook,
-    XlsxSheet,
-    XlsxDownload,
-    [Button.name]: Button,
-    [Popover.name]: Popover,
-    [PageHeader.name]: PageHeader,
-    [Dropdown.name]: Dropdown,
-    [Icon.name]: Icon,
-    [Menu.name]: Menu,
-    [Menu.Item.name]: Menu.Item,
-    [Radio.Group.name]: Radio.Group,
-    [Radio.Button.name]: Radio.Button,
-    [Pagination.name]: Pagination,
-    [Divider.name]: Divider
+    vueQr
   },
   data() {
     return {
       zh_CN,
       en_US,
       locale: en_US,
+      alipayImg,
+      wechatImg,
       date: new Date()
     }
   },
@@ -159,7 +138,7 @@ export default {
       const localeValue = e.target.value
       this.locale = localeValue.locale == 'en' ? this.en_US : this.zh_CN
 
-      EventBus.$emit('changeLanguage', e)
+      EventBus.emit('changeLanguage', e)
     },
     toReward(payUrl) {
       if (payUrl == this.$store.state.profiles.wechatPayUrl) {
@@ -167,6 +146,14 @@ export default {
       } else {
         window.location.href = payUrl
       }
+    },
+    downloadTemplate() {
+      const workbook = XLSX.utils.book_new()
+      this.sheets.forEach(sheet => {
+        const worksheet = XLSX.utils.json_to_sheet(sheet.data)
+        XLSX.utils.book_append_sheet(workbook, worksheet, sheet.name)
+      })
+      XLSX.writeFile(workbook, 'luck_draw.xlsx')
     }
   },
   computed: {

@@ -6,7 +6,7 @@
         :sub-title="$t('luckCloud.header.subtitle')"
         @back="() => $router.push({name: 'home'})"
     >
-      <template slot="extra">
+      <template #extra>
         <a-tooltip placement="topLeft" :title="$t('luckCloud.switchTips')">
           <a-switch
               class="action_s"
@@ -25,13 +25,16 @@
             @change="onChange"
             :placeholder="$t('luckCloud.placeholder')"
         />
-        <a-button key="3" icon="sync" @click="handleRandomItem">
+        <a-button key="3" @click="handleRandomItem">
+          <template #icon><a-icon type="sync"/></template>
           {{ $t('luckCloud.header.rr') }}
         </a-button>
-        <a-button key="2" icon="minus-circle" @click="handleClearCache">
+        <a-button key="2" @click="handleClearCache">
+          <template #icon><a-icon type="minus-circle"/></template>
           {{ $t('luckCloud.header.cc') }}
         </a-button>
-        <a-button key="1" icon="setting" type="primary" @click="showDrawer">
+        <a-button key="1" type="primary" @click="showDrawer">
+          <template #icon><a-icon type="setting"/></template>
           {{ $t('luckCloud.header.st') }}
         </a-button>
       </template>
@@ -41,7 +44,7 @@
         :title="$t('luckCloud.listTitle')"
         placement="right"
         :closable="false"
-        :visible="visible"
+        :open="visible"
         width="50%"
         @close="onClose"
     >
@@ -98,7 +101,6 @@
           {{ $t('luckCloud.go') }}
         </a-button>
         <a-button
-            icon="dashboard"
             type=""
             shape="round"
             size="large"
@@ -106,6 +108,7 @@
             :disabled="isRunning"
             @click="start"
         >
+          <template #icon><a-icon type="dashboard"/></template>
           {{ isActive ? $t('luckCloud.stop') : $t('luckCloud.start') }}
         </a-button>
       </div>
@@ -114,7 +117,6 @@
 </template>
 
 <script>
-import {Button, PageHeader, Drawer, Input, Icon, Tooltip, InputNumber, Result, Switch, Empty} from 'ant-design-vue'
 import ItemList from './list/itemList'
 import '@/assets/js/tagcanvas.js'
 import {mapState, mapMutations} from 'vuex'
@@ -122,17 +124,7 @@ import {mapState, mapMutations} from 'vuex'
 export default {
   name: 'LuckCloud',
   components: {
-    ItemList,
-    [Empty.name]: Empty,
-    [PageHeader.name]: PageHeader,
-    [Button.name]: Button,
-    [Drawer.name]: Drawer,
-    [Input.name]: Input,
-    [Icon.name]: Icon,
-    [Tooltip.name]: Tooltip,
-    [InputNumber.name]: InputNumber,
-    [Result.name]: Result,
-    [Switch.name]: Switch
+    ItemList
   },
   data() {
     return {

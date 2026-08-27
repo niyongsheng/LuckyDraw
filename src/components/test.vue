@@ -118,7 +118,7 @@ export default {
   mounted() {
     this.initBall()
   },
-  beforeDestroy() {
+  beforeUnmount() {
     clearInterval(this.timer)
     this.timer = null
   }

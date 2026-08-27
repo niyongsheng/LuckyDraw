@@ -6,14 +6,17 @@
         :sub-title="$t('luckStar.header.subtitle')"
         @back="() => $router.push({name: 'home'})"
     >
-      <template slot="extra">
-        <a-button key="3" icon="sync" @click="handleRandomItem">
+      <template #extra>
+        <a-button key="3" @click="handleRandomItem">
+          <template #icon><a-icon type="sync"/></template>
           {{ $t('luckStar.header.rr') }}
         </a-button>
-        <a-button key="2" icon="minus-circle" @click="handleClearCache">
+        <a-button key="2" @click="handleClearCache">
+          <template #icon><a-icon type="minus-circle"/></template>
           {{ $t('luckStar.header.cc') }}
         </a-button>
-        <a-button key="1" icon="setting" type="primary" @click="showDrawer">
+        <a-button key="1" type="primary" @click="showDrawer">
+          <template #icon><a-icon type="setting"/></template>
           {{ $t('luckStar.header.st') }}
         </a-button>
       </template>
@@ -23,7 +26,7 @@
         :title="$t('luckStar.listTitle')"
         placement="right"
         :closable="false"
-        :visible="visible"
+        :open="visible"
         width="50%"
         @close="onClose"
     >
@@ -49,7 +52,7 @@
     />
     <div v-show="!showEmpty">
       <div class="content">
-        <img :src="randomMember.url || require('@/assets/logo.png')" style="border-radius: 5px">
+        <img :src="randomMember.url || logoImg" style="border-radius: 5px">
         <h2>{{ randomMember.name || $t('luckStar.emptyTip') }}</h2>
       </div>
       <div class="action">
@@ -66,7 +69,6 @@
         </a-button>
         <br/>
         <a-button
-            icon="dashboard"
             type=""
             shape="round"
             size="large"
@@ -74,6 +76,7 @@
             :disabled="isRunning"
             @click="start"
         >
+          <template #icon><a-icon type="dashboard"/></template>
           {{ isActive ? $t('luckStar.stop') : $t('luckStar.start') }}
         </a-button>
       </div>
@@ -82,22 +85,17 @@
 </template>
 
 <script>
-import {Button, PageHeader, Drawer, Input, Icon, Tooltip, Empty, Alert} from 'ant-design-vue'
+import { h } from 'vue'
+import { SmileOutlined } from '@ant-design/icons-vue'
 import ItemList from './list/itemList'
 import {mapState, mapMutations} from 'vuex'
+
+import logoImg from '@/assets/logo.png'
 
 export default {
   name: "LuckStar",
   components: {
-    ItemList,
-    [Empty.name]: Empty,
-    [PageHeader.name]: PageHeader,
-    [Button.name]: Button,
-    [Drawer.name]: Drawer,
-    [Input.name]: Input,
-    [Icon.name]: Icon,
-    [Tooltip.name]: Tooltip,
-    [Alert.name]: Alert
+    ItemList
   },
   data() {
     return {
@@ -106,7 +104,8 @@ export default {
       visible: false,
       isActive: false,
       luckMember: [],
-      randomMember: {}
+      randomMember: {},
+      logoImg
     }
   },
   methods: {
@@ -174,7 +173,7 @@ export default {
         duration: null,
         message: member.name,
         description: member.subtitle,
-        icon: <a-icon type="smile" style="color: #108ee9"/>,
+        icon: h(SmileOutlined, { style: { color: '#108ee9' } }),
       });
     },
     showDrawer() {
@@ -210,7 +209,7 @@ export default {
     },
     ...mapState('luckStarM', ['dataSource'])
   },
-  beforeDestroy() {
+  beforeUnmount() {
     this.$notification.destroy()
   }
 }

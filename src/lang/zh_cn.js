@@ -31,7 +31,7 @@ export default {
         cl: '清空',
         del: '删除',
         dela: '确定删除？',
-        col: '[{"title":"序号","dataIndex":"key"},{"title":"标题","dataIndex":"name","width":"20%","scopedSlots":{"customRender":"name"}},{"title":"副标题","dataIndex":"subtitle","width":"20%","scopedSlots":{"customRender":"subtitle"}},{"title":"图片链接","dataIndex":"url","width":"30%","scopedSlots":{"customRender":"url"}},{"title":"备注","dataIndex":"remark","scopedSlots":{"customRender":"remark"}},{"title":"操作","dataIndex":"operation","width":"100px","fixed":"right","scopedSlots":{"customRender":"operation"}}]'
+        col: '[{"title":"序号","dataIndex":"key"},{"title":"标题","dataIndex":"name","width":"20%"},{"title":"副标题","dataIndex":"subtitle","width":"20%"},{"title":"图片链接","dataIndex":"url","width":"30%"},{"title":"备注","dataIndex":"remark"},{"title":"操作","dataIndex":"operation","width":"100px","fixed":"right"}]'
     },
     luckCard: {
         header: {

@@ -1,5 +1,4 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import { createStore } from 'vuex'
 
 import appM from './modules/app'
 import homeModule from './modules/home'
@@ -9,9 +8,7 @@ import luckCloudModule from './modules/luckCloud'
 import luckStarModule from './modules/luckStar'
 // import moudule from './modules'
 
-Vue.use(Vuex)
-
-export default new Vuex.Store({
+export default createStore({
   strict: true, // 必须通过mutation更新状态，保证所有的状态变更都能被调试工具追踪
   state: sessionStorage.getItem('state') ? JSON.parse(sessionStorage.getItem('state')) : {
     token: '',

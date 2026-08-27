@@ -1,0 +1,54 @@
+{
+  "name": "luck_draw",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "@ant-design/icons-vue": "^7.0.1",
+    "ant-design-vue": "^4.2.6",
+    "core-js": "^3.50.0",
+    "mitt": "^3.0.1",
+    "vue": "^3.5.41",
+    "vue-i18n": "^9.14.5",
+    "vue-qr": "^5.0.3",
+    "vue-router": "^4.6.4",
+    "vuex": "^4.1.0",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "@babel/eslint-parser": "^7.28.0",
+    "@vue/cli-plugin-babel": "~5.0.9",
+    "@vue/cli-plugin-eslint": "~5.0.9",
+    "@vue/cli-service": "~5.0.9",
+    "@vue/compiler-sfc": "^3.5.41",
+    "eslint": "^8.57.1",
+    "eslint-plugin-vue": "^9.33.0",
+    "sass": "^1.77.8",
+    "sass-loader": "^13.3.3"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/vue3-essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "@babel/eslint-parser"
+    },
+    "rules": {
+      "vue/multi-word-component-names": "off"
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}

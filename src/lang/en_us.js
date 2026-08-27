@@ -31,7 +31,7 @@ export default {
         cl: 'Clear',
         del: 'Delete',
         dela: 'Sure to delete?',
-        col: '[{"title":"id","dataIndex":"key"},{"title":"name","dataIndex":"name","width":"20%","scopedSlots":{"customRender":"name"}},{"title":"subtitle","dataIndex":"subtitle","width":"20%","scopedSlots":{"customRender":"subtitle"}},{"title":"url","dataIndex":"url","width":"30%","scopedSlots":{"customRender":"url"}},{"title":"remark","dataIndex":"remark","scopedSlots":{"customRender":"remark"}},{"title":"operation","dataIndex":"operation","width":"100px","fixed":"right","scopedSlots":{"customRender":"operation"}}]'
+        col: '[{"title":"id","dataIndex":"key"},{"title":"name","dataIndex":"name","width":"20%"},{"title":"subtitle","dataIndex":"subtitle","width":"20%"},{"title":"url","dataIndex":"url","width":"30%"},{"title":"remark","dataIndex":"remark"},{"title":"operation","dataIndex":"operation","width":"100px","fixed":"right"}]'
     },
     luckCard: {
         header: {

@@ -16,17 +16,11 @@
 </template>
 
 <script>
-import {Icon, Input} from "ant-design-vue";
-
 export default {
   name: "editableCell",
   props: {
     text: String,
     // text: Any,
-  },
-  components: {
-    [Icon.name]: Icon,
-    [Input.name]: Input,
   },
   data() {
     return {
