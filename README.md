@@ -4,24 +4,21 @@ LuckyDraw
 [![](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/niyongsheng/LuckyDraw/blob/master/LICENSE)
 ===
 
-## Introduction:
+## Introduction
 > 幸运抽奖Vue Web项目<br/>
 > Luck draw Vue web project.
 
-## Example:
-Primary_instance: https://niyongsheng.github.io/luck_draw
-<br/>
-Standby_instance: https://niyongsheng.gitee.io/pages/luck_draw/1.0
+## Screenshot
 
 ![(snapshot)](https://github.com/niyongsheng/LuckyDraw/blob/master/snapshot.png?raw=true)
 
-## Modules:
+## Modules
 - [x] [Luck Card](https://niyongsheng.github.io/luck_draw/#/luckCard)
 - [x] [Luck Wheel](https://niyongsheng.github.io/luck_draw/#/luckWheel)
 - [X] [Luck Cloud](https://niyongsheng.github.io/luck_draw/#/luckCloud)
 - [x] [Luck Simple](https://niyongsheng.github.io/luck_draw/#/luckStar)
 
-## Features:
+## Features
 - [Scss](https://sass-lang.com)
 - [VueX](https://vuex.vuejs.org)
 - [AntdV](https://www.antdv.com)
@@ -29,7 +26,7 @@ Standby_instance: https://niyongsheng.gitee.io/pages/luck_draw/1.0
 - [Vue-XLSX](https://vue-xlsx.netlify.app)
 - [Vue Router](https://router.vuejs.org)
 
-## Excel:
+## Excel
 > Configure the 'luckDraw' data source
 
 | Field | Type | Default | Description | 
